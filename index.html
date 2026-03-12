@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -1068,38 +1064,38 @@
     </style>
 
 
-<script>
-    window.web = "Tejado Solar";
-    var initials = web.match(/[A-Z]/g)?.join("").slice(0, 2) || "VA";
-    generateFavicon(initials);
-    document.title = web + " - Instalaciones Eléctricas Integrales"; // Asignar dinámicamente el título
+    <script>
+        window.web = "Tejado Solar";
+        var initials = web.match(/[A-Z]/g)?.join("").slice(0, 2) || "VA";
+        generateFavicon(initials);
+        document.title = web + " - Instalaciones Eléctricas Integrales"; // Asignar dinámicamente el título
 
-    // Función para generar el favicon
-    function generateFavicon(initials) {
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+        // Función para generar el favicon
+        function generateFavicon(initials) {
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
 
-      canvas.width = 64;
-      canvas.height = 64;
+            canvas.width = 64;
+            canvas.height = 64;
 
-      // Fondo negro
-      context.fillStyle = "black";
-      context.fillRect(0, 0, canvas.width, canvas.height);
+            // Fondo negro
+            context.fillStyle = "black";
+            context.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Texto en color blanco sobre el fondo negro
-      context.font = "bold 60px sans-serif";
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = "white";
-      context.fillText(initials, canvas.width / 2, canvas.height / 2);
+            // Texto en color blanco sobre el fondo negro
+            context.font = "bold 60px sans-serif";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillStyle = "white";
+            context.fillText(initials, canvas.width / 2, canvas.height / 2);
 
-      // Crear el favicon
-      var link = document.createElement('link');
-      link.rel = 'icon';
-      link.href = canvas.toDataURL('image/png');
-      document.head.appendChild(link);
-    }
-</script>
+            // Crear el favicon
+            var link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = canvas.toDataURL('image/png');
+            document.head.appendChild(link);
+        }
+    </script>
 </head>
 
 <body>
@@ -1340,166 +1336,168 @@
 
 
 
-<!-- Contact Section -->
-<section class="contact" id="contacto">
-    <div class="contact-form">
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="name">Nombre completo</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre" required>
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Nuestro Proceso</h2>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+                    <input type="hidden" id="asunto" name="asunto" value="tejado solar">
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Tu email"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Tu teléfono">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="property-type">Tipo de propiedad</label>
+                        <select id="property-type" name="property-type" class="form-control" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="casa">Casa Unifamiliar</option>
+                            <option value="adosado">Adosado</option>
+                            <option value="chalet">Chalet</option>
+                            <option value="comercial">Local Comercial</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Me interesa especialmente</label>
+                        <select id="interest" name="interest" class="form-control">
+                            <option value="" selected>Selecciona tu interés principal</option>
+                            <option value="tejado-solar">Tejado Solar Integrado</option>
+                            <option value="fotovoltaica">Energía Fotovoltaica</option>
+                            <option value="coche-electrico">Cargador Coche Eléctrico</option>
+                            <option value="baterias">Baterías Almacenamiento</option>
+                            <option value="sistema-completo">Sistema Completo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" class="form-control" rows="4"
+                            placeholder="Cuéntanos sobre tu proyecto de energía renovable" required></textarea>
+                    </div>
+
+                    <!-- MAPA PARA SELECCIÓN DE COORDENADAS -->
+                    <div class="form-group">
+                        <label>Ubicación de la instalación</label>
+                        <div id="map" style="height:300px;border-radius:8px;"></div>
+
+                        <input type="hidden" id="lat" name="lat">
+                        <input type="hidden" id="lng" name="lng">
+
+                        <small>Haz click en el mapa para marcar la ubicación</small>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Solicitar Estudio Gratuito</button>
+
+                    <p id="formStatus" style="margin-top:10px;"></p>
+                </form>
             </div>
-            <input type="hidden" id="asunto" name="asunto" value="tejado solar">
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Tu email" required>
-            </div>
+    <!-- LEAFLET CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-            <div class="form-group">
-                <label for="phone">Teléfono</label>
-                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Tu teléfono">
-            </div>
+    <script>
+        // -------------------------------
+        // MAPA CON LEAFLET EN MODO SATÉLITE
+        // -------------------------------
 
-            <div class="form-group">
-                <label for="property-type">Tipo de propiedad</label>
-                <select id="property-type" name="property-type" class="form-control" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="casa">Casa Unifamiliar</option>
-                    <option value="adosado">Adosado</option>
-                    <option value="chalet">Chalet</option>
-                    <option value="comercial">Local Comercial</option>
-                    <option value="otro">Otro</option>
-                </select>
-            </div>
+        // Crear mapa centrado en Málaga por defecto
+        let map = L.map('map').setView([36.7213, -4.4214], 7);
+        let marker = null;
 
-            <div class="form-group">
-                <label for="interest">Me interesa especialmente</label>
-                <select id="interest" name="interest" class="form-control">
-                    <option value="" selected>Selecciona tu interés principal</option>
-                    <option value="tejado-solar">Tejado Solar Integrado</option>
-                    <option value="fotovoltaica">Energía Fotovoltaica</option>
-                    <option value="coche-electrico">Cargador Coche Eléctrico</option>
-                    <option value="baterias">Baterías Almacenamiento</option>
-                    <option value="sistema-completo">Sistema Completo</option>
-                </select>
-            </div>
+        // Capa satélite Esri World Imagery
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Fuente: Esri, Maxar, Earthstar Geographics, and others',
+            maxZoom: 19,
+        }).addTo(map);
 
-            <div class="form-group">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" class="form-control" rows="4"
-                    placeholder="Cuéntanos sobre tu proyecto de energía renovable" required></textarea>
-            </div>
+        // Al hacer click en el mapa, colocar/actualizar marcador
+        map.on('click', function (e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
 
-            <!-- MAPA PARA SELECCIÓN DE COORDENADAS -->
-            <div class="form-group">
-                <label>Ubicación de la instalación</label>
-                <div id="map" style="height:300px;border-radius:8px;"></div>
-
-                <input type="hidden" id="lat" name="lat">
-                <input type="hidden" id="lng" name="lng">
-
-                <small>Haz click en el mapa para marcar la ubicación</small>
-            </div>
-
-            <button type="submit" class="btn-submit">Solicitar Estudio Gratuito</button>
-
-            <p id="formStatus" style="margin-top:10px;"></p>
-        </form>
-    </div>
-</section>
-
-<!-- LEAFLET CSS & JS -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-    // -------------------------------
-    // MAPA CON LEAFLET EN MODO SATÉLITE
-    // -------------------------------
-
-    // Crear mapa centrado en Málaga por defecto
-    let map = L.map('map').setView([36.7213, -4.4214], 7);
-    let marker = null;
-
-    // Capa satélite Esri World Imagery
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri &mdash; Fuente: Esri, Maxar, Earthstar Geographics, and others',
-        maxZoom: 19,
-    }).addTo(map);
-
-    // Al hacer click en el mapa, colocar/actualizar marcador
-    map.on('click', function(e) {
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
-
-        if (marker) {
-            marker.setLatLng(e.latlng);
-        } else {
-            marker = L.marker(e.latlng).addTo(map);
-        }
-
-        // Guardar coordenadas en inputs ocultos
-        document.getElementById("lat").value = lat;
-        document.getElementById("lng").value = lng;
-    });
-
-    // -------------------------------
-    // ENVÍO DEL FORMULARIO
-    // -------------------------------
-    document.getElementById("contactForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const statusEl = document.getElementById("formStatus");
-        statusEl.textContent = "Enviando...";
-        statusEl.style.color = "#333";
-
-        // Recoger todos los campos del formulario
-        const params = new URLSearchParams();
-        params.append('name', document.getElementById('name').value || '');
-        params.append('email', document.getElementById('email').value || '');
-        params.append('request_type', document.getElementById('interest')?.value || '');
-        params.append('area', document.getElementById('property-type')?.value || '');
-        params.append('message', document.getElementById('message').value || '');
-        params.append('lat', document.getElementById('lat')?.value || '');
-        params.append('lng', document.getElementById('lng')?.value || '');
-        params.append('asunto', 'tejado solar');
-
-        try {
-            const res = await fetch("https://doctec.duckdns.org/fast/contacto", {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: params.toString()
-            });
-
-            const text = await res.text();
-            if (!res.ok) {
-                statusEl.textContent = `Error ${res.status}: ${text || res.statusText}`;
-                statusEl.style.color = "red";
-                return;
-            }
-
-            statusEl.textContent = "¡Solicitud enviada correctamente!";
-            statusEl.style.color = "green";
-            e.target.reset();
-
-            // eliminar marcador al enviar
             if (marker) {
-                map.removeLayer(marker);
-                marker = null;
+                marker.setLatLng(e.latlng);
+            } else {
+                marker = L.marker(e.latlng).addTo(map);
             }
 
-        } catch (err) {
-            statusEl.textContent = "Error al enviar la solicitud: " + err.message;
-            statusEl.style.color = "red";
-        }
-    });
-</script>
+            // Guardar coordenadas en inputs ocultos
+            document.getElementById("lat").value = lat;
+            document.getElementById("lng").value = lng;
+        });
+
+        // -------------------------------
+        // ENVÍO DEL FORMULARIO
+        // -------------------------------
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const statusEl = document.getElementById("formStatus");
+            statusEl.textContent = "Enviando...";
+            statusEl.style.color = "#333";
+
+            // Recoger todos los campos del formulario
+            const params = new URLSearchParams();
+            params.append('name', document.getElementById('name').value || '');
+            params.append('email', document.getElementById('email').value || '');
+            params.append('request_type', document.getElementById('interest')?.value || '');
+            params.append('area', document.getElementById('property-type')?.value || '');
+            params.append('message', document.getElementById('message').value || '');
+            params.append('lat', document.getElementById('lat')?.value || '');
+            params.append('lng', document.getElementById('lng')?.value || '');
+            params.append('asunto', 'tejado solar');
+
+            try {
+                const res = await fetch("https://doctec.duckdns.org/fast/contacto", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: params.toString()
+                });
+
+                const text = await res.text();
+                if (!res.ok) {
+                    statusEl.textContent = `Error ${res.status}: ${text || res.statusText}`;
+                    statusEl.style.color = "red";
+                    return;
+                }
+
+                statusEl.textContent = "¡Solicitud enviada correctamente!";
+                statusEl.style.color = "green";
+                e.target.reset();
+
+                // eliminar marcador al enviar
+                if (marker) {
+                    map.removeLayer(marker);
+                    marker = null;
+                }
+
+            } catch (err) {
+                statusEl.textContent = "Error al enviar la solicitud: " + err.message;
+                statusEl.style.color = "red";
+            }
+        });
+    </script>
 
 
 
